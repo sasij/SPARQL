@@ -10,12 +10,11 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTH
 DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR 
 THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 /*****************************************************************************************************************************************************
-/*****************************************************************************************************************************************************/
+/************************************************************ @_juanjos_ *****************************************************************************/
 var app = app || {};
 
 $(document).on("ready", function(){
 
-    //condicion de la consulta
     //** n = 0 run the first query
     //** n = 1 run the second query
     //** n = 2 run the third query
@@ -71,11 +70,11 @@ $(document).on("ready", function(){
                 }';
     }
 
-    //Ajax call to return data in JSON format 
-
+    //Ajax call to return data in JSON format
+    $.ajax({
         //JSON with Padding ** necessary for security
         dataType: 'jsonp',
-        //The data sent
+        //The data sent to the endpoint
         data: {
             query: query,
             format: 'application/sparql-results+json'
@@ -83,7 +82,7 @@ $(document).on("ready", function(){
         //Endpoint path
         url: 'http://dbpedia.org/sparql',
         success: function(data){
-            //If we have success, we add the data to the html file.
+            //if it has success, the data are added to the html file
             if(n == 0)
                 $("#results").append('<tr><th>Label</th><th>Coordenadas</th></tr>');
             else if(n == 1)
